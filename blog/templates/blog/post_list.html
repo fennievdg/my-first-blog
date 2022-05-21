@@ -10,17 +10,19 @@
         <p><i>Fennie's blog!</i></p>
         <p>It works!</p>
         <p style="color:rgb(255,0,0);">My first website</p>
-        <article>
-            <time>published: 21.06.2014, 12:14</time>
-            <h2><a href="">My first post</a></h2>
-            <p>Cookies</p>
-        </article>
+        {% for post in posts %}
+            <article>
+                <time>published: {{ post.published_date }}</time>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </article>
+        {% endfor %}
 
-        <article>
+        {{ posts }}
             <time>published: 14.06.2014, 12:14</time>
             <h2><a href="">My second post</a></h2>
             <p>Cookies2</p>
-        </article>
+        {{ posts }}
     </body>
     <footer>
         <p>My footer!</p>
