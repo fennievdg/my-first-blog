@@ -1,32 +1,13 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <title>Fennie's blog</title>
-    </head>
-    <body style="background-color:powderblue;">
-        <header>
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </header>
-        <p><i>Fennie's blog!</i></p>
-        <p>It works!</p>
-        <p style="color:rgb(255,0,0);">My first website</p>
-        {% for post in posts %}
-            <article>
-                <time>published: {{ post.published_date }}</time>
-                <h2><a href="">{{ post.title }}</a></h2>
-                <p>{{ post.text|linebreaksbr }}</p>
-            </article>
-        {% endfor %}
+{% extends 'blog/base.html' %}
 
-        {{ posts }}
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My second post</a></h2>
-            <p>Cookies2</p>
-        {{ posts }}
-    </body>
-    <footer>
-        <p>My footer!</p>
-    </footer>
-</html>
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+            <h2><a href="">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
